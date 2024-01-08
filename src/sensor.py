@@ -1,5 +1,5 @@
 import datetime
-
+import random
 
 def is_valid_hour(hour):
     return isinstance(hour, int) and 0 <= hour <= 23
@@ -26,8 +26,14 @@ class Sensor:
             return None
 
         activity_multiplier = 1.0 if is_work_hours(hour) or is_work_day_of_week(day) else 0.2
+        output = activity_multiplier * (day.day * 31 + hour * 24 + hour * day.month * 365) % self.seed
+        if random.random() < 0.01:
+            if random.choice((True, False)):
+                return None
+            else:
+                return output * self.seed * (-1) ** random.choice((1, 2))
 
-        return activity_multiplier * (day.day * 31 + hour * 24 + hour * day.month * 365) % self.seed
+        return output
 
 
 a = Sensor(6700)

@@ -1,6 +1,7 @@
 import datetime
 import random
 
+
 def is_valid_hour(hour):
     return isinstance(hour, int) and 0 <= hour <= 23
 
@@ -31,7 +32,7 @@ class Sensor:
             if random.choice((True, False)):
                 return None
             else:
-                return output * self.seed * (-1) ** random.choice((1, 2))
+                return output * 5 * (-1) ** random.choice((1, 2))
 
         return output
 

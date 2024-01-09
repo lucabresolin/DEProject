@@ -1,5 +1,7 @@
 import sys
 import datetime
+import requests
+
 
 def main():
     if len(sys.argv) != 2:
@@ -13,6 +15,13 @@ def main():
         exit(2)
 
     print(f"Hello world {working_date}")
+
+    api_response = requests.get("http://127.0.0.1:8000",
+                                params={'year': working_date.year,
+                                        'month': working_date.month,
+                                        'day': working_date.day,
+                                        'hour': 23})
+    print(api_response.json())
 
 
 if __name__ == "__main__":

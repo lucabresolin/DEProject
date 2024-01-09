@@ -3,7 +3,7 @@ import random
 import unittest
 import datetime
 
-from src.sensor import Sensor
+from sensor_api.sensor import Sensor
 
 
 def random_date():

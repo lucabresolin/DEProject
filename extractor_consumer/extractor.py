@@ -1,10 +1,12 @@
 import os.path
 import sys
 import datetime
+
 import requests
 import pandas as pd
 
 OUTPUT_FOLDER = "data/raw"
+
 
 def main():
     if len(sys.argv) != 2:
@@ -32,12 +34,15 @@ def main():
             visitor_count = api_response.json()['visiteurs']
             current_row = (working_date, hour, visitor_count)
             data.append(current_row)
+
         working_date += delta
 
     df = (pd.DataFrame(data, columns=['date', 'hour', 'visitors'])
           .assign(month=lambda df_: df_['date'].map(lambda x: f"{x.month}_{x.year}"))
           .assign(unite="visiteurs")
-          .assign(id_capteur=None)
+          .assign(id_magasin=None)
+          .merge(pd.DataFrame(["capteur_titouan", "capteur_arnaud", "capteur_alexis"], columns=["id_capteur"]),
+                 how="cross")
           )
     unique_months = df.month.unique()
 

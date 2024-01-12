@@ -14,6 +14,8 @@ def main():
         'Quel capteur souhaitez-vous étudier',
         duckdb.sql("SELECT DISTINCT id_capteur FROM data").to_df())
 
+    st.write(duckdb.sql(f"SELECT * FROM data WHERE id_capteur = '{option}'").to_df())
+
     return 8
 
 

@@ -19,8 +19,10 @@ def main():
     st.write(working_data)
 
     fig = px.line(working_data, x="date", y="visitors")
+    figMoyh = px.line(working_data, x="date", y="moyenne_roulante")
 
     st.plotly_chart(fig)
+    st.plotly_chart(figMoyh)
 
     return 8
 

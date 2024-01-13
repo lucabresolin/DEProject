@@ -2,5 +2,11 @@
 .idea*
 *__pycache__*
 venv/*
+*.db
+*.txt
+
+airflow/logs
+airflow/webserver_config.py
+
 
 */data/*

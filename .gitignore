@@ -7,6 +7,7 @@ venv/*
 
 airflow/logs
 airflow/webserver_config.py
-
+.DS_Store
+*.pid
 
 */data/*

@@ -5,7 +5,7 @@ from pyspark.sql.window import Window
 
 def main():
     spark = SparkSession.builder.appName("DataTransformer").getOrCreate()
-    df = spark.read.csv("../extractor_consumer/data/raw/*", header=True)
+    df = spark.read.csv("/Users/luca/Documents/CODE/DUBREU/PROJET/dataengineeringproject/extractor_consumer/data/raw/*", header=True)
     df.show(5)
 
     ag_df = df.groupby("date", "id_capteur").agg(F.sum(F.col("visitors")).alias("visitors"),
